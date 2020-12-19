@@ -1,37 +1,42 @@
 #include "monty.h"
+/*
+ *EXAMPLE of STACK
+ *	[ 1 ]
+ *	[ 2, 1 ]
+ *	[ 3. 2. 1 ]
+ *	[ Top ... Bottom ]
+	[ Beginning ... End ]
+ */
 /**
- **add_dnodeint - Write a function that adds a new node at the
+ *add_node - adds a new node at the
  *beginning of double linked list
  *@head: head
  *@n: number
  *Return: void
  **/
-
-/* EXAMPLE of STACK
-	[ 1 ]
-	[ 2, 1 ]
-	[ 3. 2. 1 ]
-	[ Top ... Bottom ]
-*/
 void add_node(stack_t **head, const int n)
 {
-        stack_t *new, *big_head;
+	stack_t *new, *big_head;
 
-        if (head == NULL)
-                printf("#1 Head is null from add node\n");
-        big_head = *head;
-        new = malloc(sizeof(stack_t));
-        if (new == NULL)
-                printf("#2 Head is null from add node\n");
-        new->n = n;
-        new->prev = NULL;
-        new->next = *head;
-        if (*head != NULL)
-                big_head->prev = new;
-        *head = new;
-        return;
+	if (head == NULL)
+		printf("#1 Head is null from add node\n");
+	big_head = *head;
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		printf("#2 Head is null from add node\n");
+	new->n = n;
+	new->prev = NULL;
+	new->next = *head;
+	if (*head != NULL)
+		big_head->prev = new;
+	*head = new;
 }
-/*This may be useless*/
+/**
+*delete_node - name may change
+*@head: head
+*@index: num
+*Return: void
+*/
 void delete_node(stack_t **head, unsigned int index)
 {
 	stack_t *next, *prev;
@@ -40,44 +45,36 @@ void delete_node(stack_t **head, unsigned int index)
 
 	if (*head == NULL || head == NULL)
 	{
-		/*printf("head is null");*/
+		printf("head is null");
 		return;
 	}
 	for (count = 0; cur != NULL; count++)
 	{
-
 		if (count == index)
 		{
 			prev = cur->prev;
 			next = cur->next;
-			/*MIDDLE*/
-			if (prev && next){
-				/*printf("index: %d, prev: %d, cur: %d, next: %d\n", count, prev->n, list->n, next->n);*/
+			if (prev && next)
+			{
 				prev->next = next;
 				next->prev = prev;
-				free(cur);
 			}
-			/*FIRST*/
-			else if (prev == NULL && next){
-				/*printf("index: %d, prev: NA, cur: %d, next: %d\n",index, list->n, list->next->n);*/
+			else if (prev == NULL && next)
+			{
 				cur->next = next;
 				next->prev = NULL;
-				(*head) = next;;
-				free(cur);
+				*head = next;
 			}
-			/*LAST*/
-			else if (next == NULL && prev){
-				/*printf("index: %d, prev: NA, cur: %d, next: %d\n",index, cur->n, next->n);*/
+			else if (next == NULL && prev)
+			{
 				prev->next = NULL;
 				free(next);
 			}
-			/*Only One*/
-			else if (next == NULL && prev == NULL){
-				/*printf("index: %d, prev: NA, cur: %d, next: NA\n", index, list->n);*/
-				free(cur);
+			else if (next == NULL && prev == NULL)
+			{
 				(*head) = NULL;
 			}
-			return;
+			free(cur);
 		}
 		cur = cur->next;
 	}
