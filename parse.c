@@ -13,13 +13,13 @@ int main(int argc, char *argv[]) {
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	filename = argv[1];
 	fp = fopen(filename, "r");
 	if (fp == NULL){
 		printf("Error: Can't open file %s\n",filename);
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	while (fgets(str, MAXCHAR, fp) != NULL)
 	{
