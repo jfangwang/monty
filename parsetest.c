@@ -9,8 +9,11 @@ int main() {
 	char* filename = "/home/vagrant/monty/tests/01.m";
 	int numcmd = 0;
 	int a = 0;
-	char* word = "push\0";
+	char* word = "push";
 	int count = 0;
+	int ind = 0;
+	int worlen = 0;
+	int toklen = 0;
 
 	fp = fopen(filename, "r");
 	if (fp == NULL){
@@ -26,17 +29,23 @@ int main() {
 		// Keep printing tokens while one of the 
 		// delimiters present in str[]. 
 		while (token != NULL) {
-			a = 0;
-			printf("%s, %zu, %zu\n", token, strlen(word), strlen(token));
-			if (strlen(word) == strlen(token))
+			toklen = 0;
+			worlen = 0;
+			ind = 0;
+			while (*(token + toklen) != '\0' && *(token + toklen) != '\n')
+				toklen += 1;
+			while (*(word + worlen) != '\0' && *(word + worlen) != '\n')
+				worlen += 1;
+			printf("%s, %d, %d\n", token, worlen, toklen);
+			if (toklen == worlen)
 			{
-				while (word[a] == token[a] && token[a] != '\0')
+				while (word[ind] == token[ind] && token[ind] != '\0' && token[ind] != '\n')
 				{
-					printf("%c, %c\n", word[a], token[a]);
-					a++;
+					printf("%c, %c\n", word[ind], token[ind]);
+					ind++;
 				}
 			}
-			if (a == strlen(token))
+			if (ind == worlen)
 				count += 1;
 			token = strtok(NULL, " "); 
 		}
