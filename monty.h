@@ -38,9 +38,9 @@ typedef struct instruction_s
 
 
 
-/* LINKED LISTS TESTS HEADERS */
-size_t print_dlistint(const stack_t *h);
+/* LINKED LISTS UNIT TESTS HEADERS */
+size_t print_node(const stack_t *h);
 
-/* END OF LINKED LISTS HEADERS */
+/* END OF LINKED UNIT LISTS HEADERS */
 
 #endif

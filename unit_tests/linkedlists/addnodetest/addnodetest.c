@@ -21,6 +21,6 @@ int main(void)
     add_node(&head, 98);
     add_node(&head, 402);
     add_node(&head, 1024);
-    print_dlistint(head);
+    print_node(head);
     return (EXIT_SUCCESS);
 }
