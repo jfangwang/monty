@@ -1,4 +1,4 @@
-#include "../../../monty.h"
+#include "monty.h"
 /**
  *print_dlistint - Write a function that prints all
  *the elements of a dlistint_t list.

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "../../../monty.h"
+#include "monty.h"
 
 /**
  * main - check the code for Holberton School students.

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "../../../monty.h"
+#include "monty.h"
 
 /**
  * main - check the code for Holberton School students.
@@ -22,12 +22,15 @@ int main(void)
     print_node(head);
     printf("-----------------\n");
     delete_node(&head, 4);
+    printf("Deleted Index: 4\n");
     print_node(head);
     printf("-----------------\n");
     delete_node(&head, 0);
+    printf("Deleted Index: 0\n");
     print_node(head);
     printf("-----------------\n");
     delete_node(&head, 2);
+    printf("Deleted Index: 2\n");
     print_node(head);
     printf("-----------------\n");
     return (0);
