@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,5 +36,11 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+
+/* LINKED LISTS TESTS HEADERS */
+size_t print_dlistint(const stack_t *h);
+
+/* END OF LINKED LISTS HEADERS */
 
 #endif
