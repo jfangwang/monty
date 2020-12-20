@@ -13,7 +13,9 @@ int main(int argc, char *argv[])
 	/*Filename will be argv, max num of chars */
 	char *filename, str[MAXCHAR];
 	/* Given Command */
-	char *token, *word = "dumbfunc";
+	char *token;
+	char *word;
+	char *word2 = "push\n";
 	int ind, wordlen, toklen, linecount, count = 0;
 	/* Stack DLL */
 	stack_t *head;
@@ -37,7 +39,7 @@ int main(int argc, char *argv[])
 	{
 		/* Will print out each line of file */
 		linecount += 1;
-		printf("Line: %d Str is: %s\n", linecount, str);
+		//printf("Line: %d Str is: %s\n", linecount, str);
 		token = strtok(str, " ");
 		while (token != NULL)
 		{
@@ -46,12 +48,6 @@ int main(int argc, char *argv[])
 			ind = 0;
 			/* custom len checking for null byte or new line */
 			/* len(str) counts newline as character */
-			while (*(token + toklen) != '\0' && *(token + toklen) != '\n')
-				toklen += 1;
-			while (*(word + wordlen) != '\0' && *(word + wordlen) != '\n')
-				wordlen += 1;
-			if (toklen == wordlen)
-			{
 				/* This is where we pipe in OP functions and check */
 				/* Checks if token and command word is the same */
 				/*
@@ -59,15 +55,12 @@ int main(int argc, char *argv[])
 				while (word[ind] == token[ind] && ind < wordlen)
 					ind++;
 				*/
-				functionpointers(word, linecount, &head);
-			}
-			if (ind == wordlen)
-				count += 1;
+			//printf("From parse %s\n", token);
+			functionpointers(token, linecount, &head);
 			/* Gets next token in line if there is one */
 			token = strtok(NULL, " ");
 		}
 	}
-	printf("count: %d\n", count);
 	fclose(fp);
 	return (0);
 }

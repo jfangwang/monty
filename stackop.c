@@ -31,6 +31,20 @@ void add_node(stack_t **head, const int n)
 		big_head->prev = new;
 	*head = new;
 }
+
+size_t print_node(const stack_t *h)
+{
+        int count = 0;
+
+        while (h)
+        {
+                printf("%d\n", h->n);
+                count += 1;
+                h = h->next;
+        }
+        return (count);
+
+}
 /**
 *delete_node - name may change
 *@head: head
@@ -81,14 +95,12 @@ void delete_node(stack_t **head, unsigned int index)
 }
 
 
-void dumbfunc(stack_t **h, unsigned int line_number)
+/* Fake Push command */
+void push(stack_t **h, unsigned int line_number)
 {
-	printf("THIS IS THE START OF DUMBFUNC\n");
-	add_node(h, 69);
-	add_node(h, 3);
- 	print_node(*h);
-	printf("\n Linecount: %d\n", line_number);
-	printf("END OF DUMB FUNC");
+	add_node(h, 10);
+	add_node(h, 20);
+	return;
 }
 void pint(stack_t **h, unsigned int line_number)
 {

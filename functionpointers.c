@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void functionpointers(char *word, unsigned int linenum, stack_t **head)
+void functionpointers(char *token, unsigned int linenum, stack_t **head)
 {
 	/*
 	   typedef struct instruction_s
@@ -10,10 +10,12 @@ void functionpointers(char *word, unsigned int linenum, stack_t **head)
 	   } instruction_t;
 	 */
 	instruction_t array[] = {
-		/*
 		{"push", push},
+		/*
 		{"pall", pall},
+		*/
 		{"pint", pint},
+		/*
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
@@ -30,15 +32,33 @@ void functionpointers(char *word, unsigned int linenum, stack_t **head)
 		{"stack", stack},
 		{"queue", queue},
 		*/
-		{"dumbfunc", dumbfunc},
 		{NULL, NULL}
 	};
-	char *dumbfunc = "dumbfunc";
+	char *command, *dumbfunc = "dumbfunc";
 	int count = 0;
+	int toklen = 0;
+	int commandlen = 0;
+	int sharedLetters = 0;
 
 	while (array[count].opcode)
 	{
-		if (array[count].opcode == dumbfunc)
+		toklen = 0;
+		commandlen = 0;
+		sharedLetters = 0;
+		command = array[count].opcode;
+		/* Checks the len of token and command */
+		while (*(token + toklen) != '\0' && *(token + toklen) != '\n')
+			toklen += 1;
+		while (command[commandlen] != '\0' && command[commandlen] != '\n')
+			commandlen += 1;
+		if (toklen == commandlen)
+		{
+			/* Checks if they have the same letters */
+			while (command[sharedLetters] == token[sharedLetters] && sharedLetters < commandlen)
+					sharedLetters++;
+		}
+		/* Command == Token if sharedLetters is the commandlen */
+		if (sharedLetters == commandlen)
 		{
 			array[count].f(head, linenum);
 			return;
@@ -46,9 +66,10 @@ void functionpointers(char *word, unsigned int linenum, stack_t **head)
 		else
 			count++;
 	}
+	/* Will create a custom error function if command is not found */
 	if (array[count].opcode == NULL)
 	{
-		printf("Error from functionpointers");
+		printf("Error from functionpointers\n");
 		free(head);
 		exit(EXIT_FAILURE);
 	}
