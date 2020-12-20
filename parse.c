@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	char *filename, str[MAXCHAR];
 	/* Given Command */
 	char *token, *word = "push";
-	int ind, wordlen, toklen, count = 0;
+	int ind, wordlen, toklen, linecount, count = 0;
 
 	/* num of args */
 	if (argc != 2)
@@ -29,10 +29,12 @@ int main(int argc, char *argv[])
 		printf("Error: Can't open file %s\n", filename);
 		return (EXIT_FAILURE);
 	}
+	linecount = 0;
 	while (fgets(str, MAXCHAR, fp) != NULL)
 	{
 		/* Will print out each line of file */
-		printf("Str is: %s", str);
+		linecount += 1;
+		printf("Line: %d Str is: %s\n", linecount, str);
 		token = strtok(str, " ");
 		while (token != NULL)
 		{
