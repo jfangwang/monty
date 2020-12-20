@@ -18,8 +18,8 @@ void add_node(stack_t **head, const int n)
 {
 	stack_t *new, *big_head;
 
-	if (head == NULL)
-		printf("#1 Head is null from add node\n");
+//	if (head == NULL)
+//		printf("#1 Head is null from add node\n");
 	big_head = *head;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -78,4 +78,20 @@ void delete_node(stack_t **head, unsigned int index)
 		}
 		cur = cur->next;
 	}
+}
+
+
+void dumbfunc(stack_t **h, unsigned int line_number)
+{
+	printf("THIS IS THE START OF DUMBFUNC\n");
+	add_node(h, 69);
+	add_node(h, 3);
+ 	print_node(*h);
+	printf("\n Linecount: %d\n", line_number);
+	printf("END OF DUMB FUNC");
+}
+void pint(stack_t **h, unsigned int line_number)
+{
+ 	print_node(*h);
+	return;
 }

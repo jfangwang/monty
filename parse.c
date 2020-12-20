@@ -13,8 +13,11 @@ int main(int argc, char *argv[])
 	/*Filename will be argv, max num of chars */
 	char *filename, str[MAXCHAR];
 	/* Given Command */
-	char *token, *word = "push";
+	char *token, *word = "dumbfunc";
 	int ind, wordlen, toklen, linecount, count = 0;
+	/* Stack DLL */
+	stack_t *head;
+	head = NULL;	
 
 	/* num of args */
 	if (argc != 2)
@@ -51,8 +54,12 @@ int main(int argc, char *argv[])
 			{
 				/* This is where we pipe in OP functions and check */
 				/* Checks if token and command word is the same */
+				/*
+				functionpointers(char *word, unsigned int linenum, stack_t **head)
 				while (word[ind] == token[ind] && ind < wordlen)
 					ind++;
+				*/
+				functionpointers(word, linecount, &head);
 			}
 			if (ind == wordlen)
 				count += 1;

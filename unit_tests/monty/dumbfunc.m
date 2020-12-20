@@ -1,0 +1,2 @@
+dumbfunc
+push 1
