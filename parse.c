@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	filename = argv[1];
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
 		printf("Error: Can't open file %s\n", filename);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	linecount = 0;
 	while (fgets(str, MAXCHAR, fp) != NULL)
