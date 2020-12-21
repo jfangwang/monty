@@ -54,7 +54,6 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 	if (array[count].opcode == NULL)
 	{
 		printf("Error from functionpointers\n");
-		free(head);
 		exit(EXIT_FAILURE);
 	}
 }
