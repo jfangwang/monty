@@ -17,7 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	op = strtok(NULL, DELIMS);
+	op = strtok(NULL, "\n \t\r");
 	if (op == NULL || stack == NULL)
 	{
 		printf("L%u: usage: push integer\n", line_number);
