@@ -10,11 +10,8 @@
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char *filename, str[MAXCHAR];
-	char *token;
-	char *word;
-	char *word2 = "push\n";
-	int ind, wordlen, toklen, linecount, count = 0;
+	char *token, *filename, str[MAXCHAR];
+	int linecount;
 	stack_t *head = NULL;
 
 	if (argc != 2)
@@ -36,9 +33,6 @@ int main(int argc, char *argv[])
 		token = strtok(str, " ");
 		while (token != NULL)
 		{
-			toklen = 0;
-			wordlen = 0;
-			ind = 0;
 			functionpointers(token, linecount, &head);
 			token = strtok(NULL, " ");
 		}

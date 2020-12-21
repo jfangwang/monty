@@ -36,9 +36,11 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void functionpointers(char *token, unsigned int linenum, stack_t **head);
 void add_node(stack_t **head, const int n);
 void delete_node(stack_t **head, unsigned int index);
 void pint(stack_t **stack, unsigned int line_number);
+void pall(stack_t **head, unsigned int line_number);
 size_t print_node(const stack_t *h);
 void push(stack_t **head, unsigned int line, char **args);
 #endif

@@ -10,8 +10,9 @@
 void push(stack_t **head, unsigned int line, char **args)
 {
 	stack_t *new;
-	int print = 0, num = 0;
-
+	/*
+	int num;
+	*/
 	if (head == NULL)
 		return;
 	if (args[1] == NULL)
@@ -24,8 +25,9 @@ void push(stack_t **head, unsigned int line, char **args)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 	}
-
+	/*
 	num = atoi(args[1]);
+	*/
 	new->prev = NULL;
 	new->next = *head;
 	/*
