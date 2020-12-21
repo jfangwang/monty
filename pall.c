@@ -9,7 +9,7 @@ void pall(stack_t **head)
 {
 	stack_t *current = *head;
 
-	if (*stack == NULL)
+	if (current == NULL)
 		return;
 
 	while (current != NULL)
