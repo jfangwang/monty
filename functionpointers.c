@@ -2,20 +2,11 @@
 
 void functionpointers(char *token, unsigned int linenum, stack_t **head)
 {
-	/*
-	   typedef struct instruction_s
-	   {
-	   char *opcode;
-	   void (*f)(stack_t **stack, unsigned int line_number);
-	   } instruction_t;
-	 */
 	instruction_t array[] = {
-		{"push", push},
+		/*{"push", push},*/
 		/*
 		{"pall", pall},
-		*/
 		{"pint", pint},
-		/*
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
@@ -34,31 +25,25 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		*/
 		{NULL, NULL}
 	};
-	char *command, *dumbfunc = "dumbfunc";
-	int count = 0;
-	int toklen = 0;
-	int commandlen = 0;
-	int sharedLetters = 0;
+	char *cmd;
+	int count = 0, toklen = 0, cmdlen = 0, sharedLetters = 0;
 
 	while (array[count].opcode)
 	{
 		toklen = 0;
-		commandlen = 0;
+		cmdlen = 0;
 		sharedLetters = 0;
-		command = array[count].opcode;
-		/* Checks the len of token and command */
+		cmd = array[count].opcode;
 		while (*(token + toklen) != '\0' && *(token + toklen) != '\n')
 			toklen += 1;
-		while (command[commandlen] != '\0' && command[commandlen] != '\n')
-			commandlen += 1;
-		if (toklen == commandlen)
+		while (cmd[cmdlen] != '\0' && cmd[cmdlen] != '\n')
+			cmdlen += 1;
+		if (toklen == cmdlen)
 		{
-			/* Checks if they have the same letters */
-			while (command[sharedLetters] == token[sharedLetters] && sharedLetters < commandlen)
+			while (cmd[sharedLetters] == token[sharedLetters] && sharedLetters < cmdlen)
 					sharedLetters++;
 		}
-		/* Command == Token if sharedLetters is the commandlen */
-		if (sharedLetters == commandlen)
+		if (sharedLetters == cmdlen)
 		{
 			array[count].f(head, linenum);
 			return;
@@ -66,7 +51,6 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		else
 			count++;
 	}
-	/* Will create a custom error function if command is not found */
 	if (array[count].opcode == NULL)
 	{
 		printf("Error from functionpointers\n");

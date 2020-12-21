@@ -5,7 +5,7 @@
  *	[ 2, 1 ]
  *	[ 3. 2. 1 ]
  *	[ Top ... Bottom ]
-	[ Beginning ... End ]
+ [ Beginning ... End ]
  */
 /**
  *add_node - adds a new node at the
@@ -18,8 +18,6 @@ void add_node(stack_t **head, const int n)
 {
 	stack_t *new, *big_head;
 
-//	if (head == NULL)
-//		printf("#1 Head is null from add node\n");
 	big_head = *head;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -32,25 +30,30 @@ void add_node(stack_t **head, const int n)
 	*head = new;
 }
 
+/**
+ *print_node - prints all nodes
+ *@h: head
+ *Return: size_t
+ **/
 size_t print_node(const stack_t *h)
 {
-        int count = 0;
+	int count = 0;
 
-        while (h)
-        {
-                printf("%d\n", h->n);
-                count += 1;
-                h = h->next;
-        }
-        return (count);
+	while (h)
+	{
+		printf("%d\n", h->n);
+		count += 1;
+		h = h->next;
+	}
+	return (count);
 
 }
 /**
-*delete_node - name may change
-*@head: head
-*@index: num
-*Return: void
-*/
+ *delete_node - name may change
+ *@head: head
+ *@index: num
+ *Return: void
+ */
 void delete_node(stack_t **head, unsigned int index)
 {
 	stack_t *next, *prev;
@@ -92,18 +95,4 @@ void delete_node(stack_t **head, unsigned int index)
 		}
 		cur = cur->next;
 	}
-}
-
-
-/* Fake Push command */
-void push(stack_t **h, unsigned int line_number)
-{
-	add_node(h, 10);
-	add_node(h, 20);
-	return;
-}
-void pint(stack_t **h, unsigned int line_number)
-{
- 	print_node(*h);
-	return;
 }

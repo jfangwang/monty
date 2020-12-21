@@ -7,6 +7,7 @@
  * @args: input from file
  * Return: nothing
  */
+#define STDERR_FILENO
 void push(stack_t **head, unsigned int line_number, char **args)
 {
 	stack_t *new;

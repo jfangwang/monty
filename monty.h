@@ -36,14 +36,9 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void dumbfunc();
 void add_node(stack_t **head, const int n);
 void delete_node(stack_t **head, unsigned int index);
 void pint(stack_t **stack, unsigned int line_number);
-void push(stack_t **h, unsigned int line_number);
-/* LINKED LISTS UNIT TESTS HEADERS */
 size_t print_node(const stack_t *h);
-
-/* END OF LINKED UNIT LISTS HEADERS */
-
+void push(stack_t **head, unsigned int line_number, char **args);
 #endif
