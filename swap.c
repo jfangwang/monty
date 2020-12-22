@@ -11,8 +11,8 @@ void swap(unsigned int line, stack_t **head)
 
 	if (head == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
-		/*exit*/
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line);
+		quickExit(*head, EXIT_FAILURE);
 	}
 
 	temp = *head;
