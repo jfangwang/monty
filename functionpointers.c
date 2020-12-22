@@ -36,6 +36,8 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		}
 		count++;
 	}
+	if (array[count].opcode == NULL)
+		error(2, linenum);
 }
 char sameword(char *token, char *cmd)
 {
