@@ -52,8 +52,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern FILE *fp;
 void swap(stack_t **head, unsigned int line);
-void error(int error, unsigned int line);
 void reverse(stack_w **h);
 void functionpointers(char *token, unsigned int linenum, stack_t **head);
 void add_node(stack_t **head, int n);
@@ -65,4 +65,5 @@ void pall(stack_t **head, unsigned int line_number);
 void pop(stack_t **head, unsigned int line);
 size_t print_node(const stack_t *h);
 void push(stack_t **head, unsigned int line, char *args);
+void quickExit(stack_t *head, int status);
 #endif
