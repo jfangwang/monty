@@ -7,6 +7,29 @@
  *	[ Top ... Bottom ]
  [ Beginning ... End ]
  */
+
+/**
+ *add_string_node - adds a new node at the
+ *beginning of double linked list
+ *@head: head
+ *@n: number
+ *Return: void
+ **/
+void add_string_node(stack_w **head, char *n)
+{
+	stack_w *new, *big_head;
+
+	big_head = *head;
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		printf("#2 Head is null from add node\n");
+	new->n = n;
+	new->prev = NULL;
+	new->next = *head;
+	if (*head != NULL)
+		big_head->prev = new;
+	*head = new;
+}
 /**
  *add_node - adds a new node at the
  *beginning of double linked list
@@ -96,3 +119,22 @@ void delete_node(stack_t **head, unsigned int index)
 		cur = cur->next;
 	}
 }
+void reverse(stack_w **h)
+{
+    stack_w *prev = NULL;
+    stack_w *current = *h;
+    stack_w *next = NULL;
+    while (current != NULL) {
+        // Store next
+        next = current->next;
+ 
+        // Reverse current node's pointer
+        current->next = prev;
+ 
+        // Move pointers one position ahead.
+	prev = current;
+	current = next;
+    }
+    *h = prev;
+}
+

@@ -7,15 +7,16 @@
  * @args: input from file
  * Return: void
  */
-void push(stack_t **head, unsigned int line, char **args)
+void push(stack_t **head, unsigned int line, char *args)
 {
 	stack_t *new;
+	char *dne = "DNE";
 	/*
 	int num;
 	*/
 	if (head == NULL)
 		return;
-	if (args[1] == NULL)
+	if (args == dne)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line);
 	}

@@ -7,12 +7,15 @@
 *@argv: argv array
 *Return: exit failure or an op function
 */
+
 int main(int argc, char *argv[])
 {
 	FILE *fp;
 	char *token, *filename, str[MAXCHAR];
-	int linecount;
+	void (*push)(stack_t **head, unsigned int line, char *args);
+	int linecount, a;
 	stack_t *head = NULL;
+	stack_w *words = NULL;
 
 	if (argc != 2)
 	{
@@ -33,8 +36,40 @@ int main(int argc, char *argv[])
 		token = strtok(str, " ");
 		while (token != NULL)
 		{
-			functionpointers(token, linecount, &head);
+			/*add to words DLL */
+			add_string_node(&words, token);
 			token = strtok(NULL, " ");
+		}
+		reverse(&words);
+		/* Iterate through words DLL */
+		while (words != NULL)
+		{
+			/* Separate Push function */
+			if (sameword(words->n, "push") == 't')
+			{
+				if (words->next)
+				{
+				/* Go through the chars of the next node */
+					printf("next word: %s\n", words->next->n);
+					pushnum = words->next->n;
+					for (a = 0; words->next->n[a] != '\n'; a++)
+					{
+						if(!isdigit(words->next->n[a]))
+						{
+							pushnum = "DNE";
+							break;
+						}
+					}
+				}
+			}
+			if (pushnum != "DNE")
+				(*push)(&head, linecount, pushnum);
+			else
+			{
+				/* Rest of the commands */
+				functionpointers(words->n, linecount, &head);
+				words = words->next;
+			}
 		}
 	}
 	fclose(fp);

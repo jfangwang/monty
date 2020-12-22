@@ -3,7 +3,6 @@
 void functionpointers(char *token, unsigned int linenum, stack_t **head)
 {
 	instruction_t array[] = {
-		/*{"push", push},*/
 		{"pall", pall},
 		/*
 		{"pint", pint},
@@ -25,35 +24,42 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		*/
 		{NULL, NULL}
 	};
-	char *cmd;
-	int count = 0, toklen = 0, cmdlen = 0, sharedLetters = 0;
+	int count = 0;
+	char t = 't';
 
 	while (array[count].opcode)
 	{
-		toklen = 0;
-		cmdlen = 0;
-		sharedLetters = 0;
-		cmd = array[count].opcode;
-		while (*(token + toklen) != '\0' && *(token + toklen) != '\n')
-			toklen += 1;
-		while (cmd[cmdlen] != '\0' && cmd[cmdlen] != '\n')
-			cmdlen += 1;
-		if (toklen == cmdlen)
-		{
-			while (cmd[sharedLetters] == token[sharedLetters] && sharedLetters < cmdlen)
-					sharedLetters++;
-		}
-		if (sharedLetters == cmdlen)
+		if (sameword(token, array[count].opcode) == t)
 		{
 			array[count].f(head, linenum);
 			return;
 		}
-		else
-			count++;
+		count++;
 	}
 	if (array[count].opcode == NULL)
 	{
-		printf("Error from functionpointers\n");
-		exit(EXIT_FAILURE);
+	//	printf("Error from functionpointers, Token: %s\n", token);
 	}
+}
+char sameword(char *token, char *cmd)
+{
+	char t = 't', f = 'f';
+	int count = 0, toklen = 0, cmdlen = 0, sharedLetters = 0;
+	
+	toklen = 0;
+	cmdlen = 0;
+	sharedLetters = 0;
+	while (*(token + toklen) != '\0' && *(token + toklen) != '\n')
+		toklen += 1;
+	while (cmd[cmdlen] != '\0' && cmd[cmdlen] != '\n')
+		cmdlen += 1;
+	if (toklen == cmdlen)
+	{
+		while (cmd[sharedLetters] == token[sharedLetters] && sharedLetters < cmdlen)
+			sharedLetters++;
+	}
+	if (sharedLetters == cmdlen)
+		return(t);
+	else
+		return(f);
 }
