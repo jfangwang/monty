@@ -64,4 +64,5 @@ void pall(stack_t **head, unsigned int line_number);
 void pop(stack_t **head, unsigned int line);
 size_t print_node(const stack_t *h);
 void push(stack_t **head, unsigned int line, char *args);
+void quickExit(stack_t *head, int status);
 #endif

@@ -9,7 +9,7 @@ void quickExit(stack_t *head, int status)
 {
 	while (head)
 	{
-		free(head)
+		free(head);
 		head = head->next;
 	}
 	fclose(fp);
