@@ -7,9 +7,9 @@
 *@argv: argv array
 *Return: exit failure or an op function
 */
+FILE *fp;
 int main(int argc, char *argv[])
 {
-	FILE *fp;
 	char *token, *filename, str[MAXCHAR];
 	unsigned int linecount = 0, a, flag = 0;
 	stack_t *head = NULL;
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	char *pushnum = "DNE";
 
 	if (argc != 2)
-		error(3, linecount);
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 	filename = argv[1];
 	fp = fopen(filename, "r");
 	if (fp == NULL)
@@ -56,10 +56,10 @@ int main(int argc, char *argv[])
 					if (flag == 0)
 						(*push)(&head, linecount, pushnum);
 					else
-						error(1, linecount);
+						dprintf(STDERR_FILENO, "L%u: usage: push integer\n", linecount);
 				}
 				else
-					error(1, linecount);
+					dprintf(STDERR_FILENO, "L%u: usage: push integer\n", linecount);
 			}
 			else
 				functionpointers(words->n, linecount, &head);
