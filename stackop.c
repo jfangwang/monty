@@ -124,14 +124,10 @@ void reverse(stack_w **h)
     stack_w *prev = NULL;
     stack_w *current = *h;
     stack_w *next = NULL;
+
     while (current != NULL) {
-        // Store next
         next = current->next;
- 
-        // Reverse current node's pointer
         current->next = prev;
- 
-        // Move pointers one position ahead.
 	prev = current;
 	current = next;
     }

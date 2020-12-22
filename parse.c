@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 {
 	FILE *fp;
 	char *token, *filename, str[MAXCHAR];
-	void (*pushfunc)(stack_t **head, unsigned int line, char *args) = &push;
 	unsigned int linecount, a, flag = 0;
 	stack_t *head = NULL;
 	stack_w *words = NULL;

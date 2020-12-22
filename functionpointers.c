@@ -36,15 +36,11 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		}
 		count++;
 	}
-	if (array[count].opcode == NULL)
-	{
-	//	printf("Error from functionpointers, Token: %s\n", token);
-	}
 }
 char sameword(char *token, char *cmd)
 {
 	char t = 't', f = 'f';
-	int count = 0, toklen = 0, cmdlen = 0, sharedLetters = 0;
+	int toklen = 0, cmdlen = 0, sharedLetters = 0;
 	
 	toklen = 0;
 	cmdlen = 0;

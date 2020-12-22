@@ -9,12 +9,14 @@
  */
 void push(stack_t **head, unsigned int line, char *args)
 {
-	(void)line;
 	stack_t *new;
 	int num;
+	char *dne = "DNE";
+
+	(void)line;
 	if (head == NULL)
 		return;
-	if (args == "DNE")
+	if (args == dne)
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line);
 
 	new = malloc(sizeof(stack_t));
