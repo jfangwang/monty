@@ -6,8 +6,8 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
-		/*{"swap", swap},*/
-		/*
+		{"swap", swap},
+		/*	
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
@@ -37,7 +37,10 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		count++;
 	}
 	if (array[count].opcode == NULL)
+	{
 		dprintf(STDERR_FILENO, "L%u: unknown\n", linenum);
+		/* quickExit(head, EXIT_FAILURE); */
+	}
 }
 char sameword(char *token, char *cmd)
 {
