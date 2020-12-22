@@ -52,6 +52,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void swap(stack_t **head, unsigned int line);
 void error(int error, unsigned int line);
 void reverse(stack_w **h);
 void functionpointers(char *token, unsigned int linenum, stack_t **head);
