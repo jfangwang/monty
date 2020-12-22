@@ -4,9 +4,9 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 {
 	instruction_t array[] = {
 		{"pall", pall},
-		/*
 		{"pint", pint},
 		{"pop", pop},
+		/*
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},

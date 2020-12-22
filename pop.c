@@ -5,7 +5,7 @@
  * @line:line args came from
  * @head:input
  */
-void pop(unsigned int line, stack_t **head)
+void pop(stack_t **head, unsigned int line)
 {
 	stack_t *new = *head;
 

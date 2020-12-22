@@ -6,13 +6,13 @@
  * @line:line args come from
  * @head:input
  */
-void pint(unsigned int line, stack_t **head)
+void pint(stack_t **head, unsigned int line)
 {
-	if (*stack == NULL)
+	if (*head == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line);
 		/*insert exit here*/
 	}
 
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", (*head)->n);
 }
