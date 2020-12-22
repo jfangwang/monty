@@ -5,7 +5,6 @@
  *	[ 2, 1 ]
  *	[ 3. 2. 1 ]
  *	[ Top ... Bottom ]
- [ Beginning ... End ]
  */
 
 /**
@@ -133,4 +132,3 @@ void reverse(stack_w **h)
     }
     *h = prev;
 }
-

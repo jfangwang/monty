@@ -11,24 +11,20 @@ int main(int argc, char *argv[])
 {
 	FILE *fp;
 	char *token, *filename, str[MAXCHAR];
-	unsigned int linecount, a, flag = 0;
+	unsigned int linecount = 0, a, flag = 0;
 	stack_t *head = NULL;
 	stack_w *words = NULL;
 	char *pushnum = "DNE";
 
 	if (argc != 2)
-	{
-		printf("USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		error(3, linecount);
 	filename = argv[1];
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
-		printf("Error: Can't open file %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	linecount = 0;
 	while (fgets(str, MAXCHAR, fp) != NULL)
 	{
 		linecount += 1;
@@ -45,18 +41,25 @@ int main(int argc, char *argv[])
 		{
 			if (sameword(words->n,"push") == 't' && words->next)
 			{
-				words = words->next;
-				flag = 0;
-				pushnum = words->n;
-				for(a = 0; a < 100; a++)
+				if (words->next)
 				{
-					if (words->n[a] == '\0' || words->n[a] == '\n')
-						break;
-					if (!isdigit(words->n[a]))
-						flag = 1;
+					words = words->next;
+					flag = 0;
+					pushnum = words->n;
+					for(a = 0; a < 100; a++)
+					{
+						if (words->n[a] == '\0' || words->n[a] == '\n')
+							break;
+						if (!isdigit(words->n[a]))
+							flag = 1;
+					}
+					if (flag == 0)
+						(*push)(&head, linecount, pushnum);
+					else
+						error(1, linecount);
 				}
-				if (flag == 0)
-					(*push)(&head, linecount, pushnum);
+				else
+					error(1, linecount);
 			}
 			else
 				functionpointers(words->n, linecount, &head);
