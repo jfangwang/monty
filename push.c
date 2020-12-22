@@ -9,28 +9,21 @@
  */
 void push(stack_t **head, unsigned int line, char *args)
 {
+	(void)line;
 	stack_t *new;
-	char *dne = "DNE";
-	/*
 	int num;
-	*/
 	if (head == NULL)
 		return;
-	if (args == dne)
-	{
+	if (args == "DNE")
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line);
-	}
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-	}
-	/*
-	num = atoi(args[1]);
-	*/
-	new->prev = NULL;
+	num = atoi(args);
+	new->n = num;
 	new->next = *head;
+	new->prev = NULL;
 	/*
 	if (*head != NULL)
 		*head->prev = new;

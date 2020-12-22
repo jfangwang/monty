@@ -7,15 +7,15 @@
 *@argv: argv array
 *Return: exit failure or an op function
 */
-
 int main(int argc, char *argv[])
 {
 	FILE *fp;
 	char *token, *filename, str[MAXCHAR];
-	void (*push)(stack_t **head, unsigned int line, char *args);
-	int linecount, a;
+	void (*pushfunc)(stack_t **head, unsigned int line, char *args) = &push;
+	unsigned int linecount, a, flag = 0;
 	stack_t *head = NULL;
 	stack_w *words = NULL;
+	char *pushnum = "DNE";
 
 	if (argc != 2)
 	{
@@ -44,33 +44,26 @@ int main(int argc, char *argv[])
 		/* Iterate through words DLL */
 		while (words != NULL)
 		{
-			/* Separate Push function */
-			if (sameword(words->n, "push") == 't')
+			if (sameword(words->n,"push") == 't' && words->next)
 			{
-				if (words->next)
-				{
-				/* Go through the chars of the next node */
-					printf("next word: %s\n", words->next->n);
-					pushnum = words->next->n;
-					for (a = 0; words->next->n[a] != '\n'; a++)
-					{
-						if(!isdigit(words->next->n[a]))
-						{
-							pushnum = "DNE";
-							break;
-						}
-					}
-				}
-			}
-			if (pushnum != "DNE")
-				(*push)(&head, linecount, pushnum);
-			else
-			{
-				/* Rest of the commands */
-				functionpointers(words->n, linecount, &head);
 				words = words->next;
+				flag = 0;
+				pushnum = words->n;
+				for(a = 0; a < 100; a++)
+				{
+					if (words->n[a] == '\0' || words->n[a] == '\n')
+						break;
+					if (!isdigit(words->n[a]))
+						flag = 1;
+				}
+				if (flag == 0)
+					(*push)(&head, linecount, pushnum);
 			}
+			else
+				functionpointers(words->n, linecount, &head);
+			words = words->next;
 		}
+		free(words);
 	}
 	fclose(fp);
 	return (0);

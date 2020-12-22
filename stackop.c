@@ -37,7 +37,7 @@ void add_string_node(stack_w **head, char *n)
  *@n: number
  *Return: void
  **/
-void add_node(stack_t **head, const int n)
+void add_node(stack_t **head, int n)
 {
 	stack_t *new, *big_head;
 

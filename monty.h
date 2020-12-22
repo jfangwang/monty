@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -54,7 +54,7 @@ typedef struct instruction_s
 
 void reverse(stack_w **h);
 void functionpointers(char *token, unsigned int linenum, stack_t **head);
-void add_node(stack_t **head, const int n);
+void add_node(stack_t **head, int n);
 void add_string_node(stack_w **head, char* n);
 char sameword(char *token, char *cmd);
 void delete_node(stack_t **head, unsigned int index);

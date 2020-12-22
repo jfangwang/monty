@@ -1,2 +1,2 @@
-push
+push 1
 pint
