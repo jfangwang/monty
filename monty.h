@@ -70,4 +70,5 @@ void quickExit(stack_t *head, stack_w *words, int status);
 void _free(stack_t *head);
 void _free_words(stack_w *head);
 void add(stack_t **head, unsigned int line);
+void checkpush(stack_w *words, stack_t **head, unsigned int linecount);
 #endif
