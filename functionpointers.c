@@ -7,8 +7,8 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
-		/*	
 		{"add", add},
+		/*
 		{"nop", nop},
 		{"sub", sub},
 		{"div", div},
