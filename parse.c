@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 		temp = words;
 		while (words != NULL)
 		{
-			if (sameword(words->n,"push") == 't' && words->next)
+			if (sameword(words->n,"push") == 't')
 			{
 				if (words->next)
 				{
