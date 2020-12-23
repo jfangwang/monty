@@ -55,7 +55,7 @@ typedef struct instruction_s
 extern FILE *fp;
 void swap(stack_t **head, unsigned int line);
 void reverse(stack_w **h);
-void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words, stack_w **temp);
+void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words);
 void add_node(stack_t **head, int n);
 void add_string_node(stack_w **head, char* n);
 char sameword(char *token, char *cmd);

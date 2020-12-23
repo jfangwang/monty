@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words, stack_w **temp)
+void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words)
 {
 	instruction_t array[] = {
 		{"pall", pall},

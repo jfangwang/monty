@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 				}
 			}
 			else
-				functionpointers(words->n, linecount, &head, &words, &temp);
+				functionpointers(words->n, linecount, &head, &words);
 			words = words->next;
 		}
 		_free_words(temp);
