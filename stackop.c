@@ -23,7 +23,6 @@ void add_string_node(stack_w **head, char *n)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		quickExit(head, EXIT_FAILURE);
 	}	
 	new->n = n;
 	new->prev = NULL;
@@ -48,7 +47,7 @@ void add_node(stack_t **head, int n)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		quickExit(head, EXIT_FAILURE);
+		quickExit(*head, EXIT_FAILURE);
 	}	
 	new->n = n;
 	new->prev = NULL;
