@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void functionpointers(char *token, unsigned int linenum, stack_t **head)
+void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words, stack_w **temp)
 {
 	instruction_t array[] = {
 		{"pall", pall},
@@ -39,7 +39,7 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 	if (array[count].opcode == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", linenum, token);
-		quickExit(*head, EXIT_FAILURE);
+		quickExit(*head, *words, EXIT_FAILURE);
 	}
 }
 char sameword(char *token, char *cmd)

@@ -5,17 +5,24 @@
  * @head:input
  * @status:exit status
  */
-FILE *fp;
-void quickExit(stack_t *head, int status)
+void quickExit(stack_t *head, stack_w *words, int status)
 {
-	_free(head);
-	fclose(fp);
+	if (head != NULL)
+		_free(head);
+	if (words != NULL)
+		_free_words(words);
+	if (fp != NULL)
+		fclose(fp);
 	exit(status);
 }
-void quickExitWords(stack_w *head, int status)
-{	
-	_free_words(head);
-	fclose(fp);
+void quickExitWords(stack_w *head, stack_w *words, int status)
+{
+	if (head != NULL)
+		_free_words(head);
+	if (words != NULL)
+		_free_words(words);
+	if (fp != NULL)
+		fclose(fp);
 	exit(status);
 }
 void _free(stack_t *head)
@@ -28,17 +35,13 @@ void _free(stack_t *head)
 }
 void _free_words(stack_w *head)
 {
-	/*
-	if(head == NULL)
-		return;
-	if ((head)->next != NULL)
-		_free_words((head)->next);
-		free(head);
-	 */
-	stack_w *curr = head;
-	while ((curr = head) != NULL)
+	stack_w *temp;
+
+	temp = head;
+	while(head)
 	{
-		head = head->next;
-		free(curr);
+		temp = temp->next;
+		free(head);
+		head = temp;
 	}
 }

@@ -2,11 +2,11 @@
 
 #define MAXCHAR 1000
 /**
-*main - name may change
-*@argc: arg count
-*@argv: argv array
-*Return: exit failure or an op function
-*/
+ *main - name may change
+ *@argc: arg count
+ *@argv: argv array
+ *Return: exit failure or an op function
+ */
 FILE *fp;
 int main(int argc, char *argv[])
 {
@@ -14,19 +14,21 @@ int main(int argc, char *argv[])
 	unsigned int linecount = 0, a, flag = 0;
 	stack_t *head = NULL;
 	stack_w *words = NULL;
+	stack_w *temp = NULL;
 	char *pushnum = "DNE";
+	fp = NULL;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		quickExit(head, EXIT_FAILURE);
+		quickExit(head, words, EXIT_FAILURE);
 	}
 	filename = argv[1];
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		quickExit(head, EXIT_FAILURE);
+		quickExit(head, words, EXIT_FAILURE);
 	}
 	while (fgets(str, MAXCHAR, fp) != NULL)
 	{
@@ -39,6 +41,7 @@ int main(int argc, char *argv[])
 			token = strtok(NULL, " \n\t");
 		}
 		/* Iterate through words DLL */
+		temp = words;
 		while (words != NULL)
 		{
 			if (sameword(words->n,"push") == 't' && words->next)
@@ -60,22 +63,20 @@ int main(int argc, char *argv[])
 					else
 					{
 						fprintf(stderr, "L%u: usage: push integer\n", linecount);
-						_free_words(words);
-						quickExit(head, EXIT_FAILURE);
+						quickExit(head, words, EXIT_FAILURE);
 					}
 				}
 				else
 				{
 					fprintf(stderr, "L%u: usage: push integer\n", linecount);
-					_free_words(words);
-					quickExit(head, EXIT_FAILURE);
+					quickExit(head, words, EXIT_FAILURE);
 				}
-		}
+			}
 			else
-				functionpointers(words->n, linecount, &head);
+				functionpointers(words->n, linecount, &head, &words, &temp);
 			words = words->next;
 		}
-		_free_words(words);
+		_free_words(temp);
 	}
 	_free(head);
 	fclose(fp);

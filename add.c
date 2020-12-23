@@ -8,11 +8,12 @@
 void add(stack_t **head, unsigned int line)
 {
 	stack_t *temp = *head, *next;
+	stack_w **words = NULL;
 
 	if (head == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't add, stack too short\n", line);
-		quickExit(*head, EXIT_FAILURE);
+		quickExit(*head, *words, EXIT_FAILURE);
 	}
 
 	next = temp->next;

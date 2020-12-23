@@ -8,11 +8,12 @@
 void pop(stack_t **head, unsigned int line)
 {
 	stack_t *new = *head;
+	stack_w **words = NULL;
 
 	if (*head == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line);
-		quickExit(*head, EXIT_FAILURE);
+		quickExit(*head, *words, EXIT_FAILURE);
 	}
 
 	*head = new->next;

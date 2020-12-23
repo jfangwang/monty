@@ -48,13 +48,14 @@ void add_string_node(stack_w **head, char *n)
 void add_node(stack_t **head, int n)
 {
 	stack_t *new, *big_head;
+	stack_w **words = NULL;
 
 	big_head = *head;
 	new = (stack_t*) malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		quickExit(*head, EXIT_FAILURE);
+		quickExit(*head, *words, EXIT_FAILURE);
 	}	
 	new->n = n;
 	new->prev = NULL;
@@ -81,6 +82,18 @@ size_t print_node(const stack_t *h)
 	}
 	return (count);
 
+}
+size_t print_node_word(const stack_w *h)
+{
+	int count = 0;
+
+	while (h)
+	{
+		printf("%s\n", h->n);
+		count += 1;
+		h = h->next;
+	}
+	return (count);
 }
 /**
  *delete_node - name may change
