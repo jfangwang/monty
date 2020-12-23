@@ -51,8 +51,22 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
-extern FILE *fp;
+/**
+ * struct variables - a lists of variables
+ * @test: testing...
+ * @words: DLL
+ * @fp: file
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct variables
+{
+	int test;
+	stack_w *words;
+	FILE *fp;
+} varlist;
+extern varlist willy;
 
 void swap(stack_t **head, unsigned int line);
 void reverse(stack_w **h);

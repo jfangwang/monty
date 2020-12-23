@@ -8,12 +8,11 @@
 void swap(stack_t **head, unsigned int line)
 {
 	stack_t *temp;
-	stack_w **words = NULL;
 
 	if (head == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line);
-		quickExit(*head, *words, EXIT_FAILURE);
+		quickExit(*head, willy.words, EXIT_FAILURE);
 	}
 	temp = (*head);
 	(*head) = temp->next;

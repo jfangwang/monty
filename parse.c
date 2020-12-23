@@ -1,6 +1,5 @@
 #include "monty.h"
-
-FILE *fp = NULL;
+varlist willy;
 #define MAXCHAR 1000
 /**
  *main - name may change
@@ -13,42 +12,42 @@ int main(int argc, char *argv[])
 	char *token, *filename, str[MAXCHAR];
 	unsigned int linecount = 0;
 	stack_t *head = NULL;
-	stack_w *words = NULL, *temp = NULL;
+	stack_w *temp = NULL;
 
+	willy.fp = NULL;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		quickExit(head, words, EXIT_FAILURE);
+		quickExit(head, willy.words, EXIT_FAILURE);
 	}
-	filename = argv[1], fp = fopen(filename, "r");
-	if (fp == NULL)
+	filename = argv[1], willy.fp = fopen(filename, "r");
+	if (willy.fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		quickExit(head, words, EXIT_FAILURE);
+		quickExit(head, willy.words, EXIT_FAILURE);
 	}
-	while (fgets(str, MAXCHAR, fp) != NULL)
+	while (fgets(str, MAXCHAR, willy.fp) != NULL)
 	{
-		linecount += 1;
-		token = strtok(str, " \n\t");
+		linecount += 1, token = strtok(str, " \n\t");
 		while (token != NULL)
 		{
-			add_string_node(&words, token);
+			add_string_node(&willy.words, token);
 			token = strtok(NULL, " \n\t");
 		}
-		temp = words;
-		while (words != NULL)
+		temp = willy.words;
+		while (willy.words != NULL)
 		{
-			if (sameword(words->n, "push") == 't')
-				checkpush(words, &head, linecount);
+			if (sameword(willy.words->n, "push") == 't')
+				checkpush(willy.words, &head, linecount);
 			else
-				funp(words->n, linecount, &head, &words);
-			while (words != NULL)
-				words = words->next;
+				funp(willy.words->n, linecount, &head, &willy.words);
+			while (willy.words != NULL)
+				willy.words = willy.words->next;
 		}
 		_free_words(temp);
 	}
 	_free(head);
-	fclose(fp);
+	fclose(willy.fp);
 	return (0);
 }
 /**

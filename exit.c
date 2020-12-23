@@ -9,12 +9,13 @@
  */
 void quickExit(stack_t *head, stack_w *words, int status)
 {
+	words = willy.words;
 	if (head != NULL)
 		_free(head);
 	if (words != NULL)
 		_free_words(words);
-	if (fp != NULL)
-		fclose(fp);
+	if (willy.fp != NULL)
+		fclose(willy.fp);
 	exit(status);
 }
 /**
