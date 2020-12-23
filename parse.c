@@ -7,6 +7,12 @@
  *@argv: argv array
  *Return: exit failure or an op function
  */
+/**
+* This code fails:
+* Negative Numbers
+* Empty New Lines
+* Blank lines with more spaces
+*/
 FILE *fp;
 int main(int argc, char *argv[])
 {

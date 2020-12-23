@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+* functionpointers - points to a function
+* @token: token
+* @linenum: linenum
+* @head: head DLL
+* @words: words DLL
+* Return: void
+*/
 void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words)
 {
 	instruction_t array[] = {
@@ -9,18 +17,18 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w
 		{"swap", swap},
 		{"add", add},
 		/*
-		{"nop", nop},
-		{"sub", sub},
-		{"div", div},
-		{"mul", mul},
-		{"mod", mod},
-		{"#", comment},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{"stack", stack},
-		{"queue", queue},
+		*{"nop", nop},
+		*{"sub", sub},
+		*{"div", div},
+		*{"mul", mul},
+		*{"mod", mod},
+		*{"#", comment},
+		*{"pchar", pchar},
+		*{"pstr", pstr},
+		*{"rotl", rotl},
+		*{"rotr", rotr},
+		*{"stack", stack},
+		*{"queue", queue},
 		*/
 		{NULL, NULL}
 	};
@@ -42,11 +50,17 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w
 		quickExit(*head, *words, EXIT_FAILURE);
 	}
 }
+/**
+* sameword - checks if token and cmd is the same word
+* @token: token
+* @cmd: command
+* Return: void
+*/
 char sameword(char *token, char *cmd)
 {
 	char t = 't', f = 'f';
 	int toklen = 0, cmdlen = 0, sharedLetters = 0;
-	
+
 	toklen = 0;
 	cmdlen = 0;
 	sharedLetters = 0;
@@ -60,7 +74,28 @@ char sameword(char *token, char *cmd)
 			sharedLetters++;
 	}
 	if (sharedLetters == cmdlen)
-		return(t);
+		return (t);
 	else
-		return(f);
+		return (f);
+}
+/**
+*reverse - reverses a list
+*@h: head
+*Return: void
+*/
+void reverse(stack_w **h)
+{
+	stack_w *prev = NULL;
+	stack_w *current = *h;
+	stack_w *next = NULL;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	*h = prev;
+	free(prev);
 }

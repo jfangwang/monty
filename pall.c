@@ -2,8 +2,9 @@
 
 /**
  * pall-print all values on the stack
- * Return:void
  * @head:head of list
+ * @line_number: line num
+ * Return:void
  */
 void pall(stack_t **head, unsigned int line_number)
 {

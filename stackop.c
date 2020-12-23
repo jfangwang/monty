@@ -18,19 +18,19 @@ void add_string_node(stack_w **head, char *n)
 {
 	stack_w *new, *last = *head;
 
-	new = (stack_w*) malloc(sizeof(stack_w));
+	new = (stack_w *) malloc(sizeof(stack_w));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		/*quickExitWords(*head, EXIT_FAILURE);*/
-	}	
+	}
 	new->n = n;
 	new->next = NULL;
 	/*if list is empty */
 	if ((*head) == NULL)
 	{
 		new->prev = NULL;
-		(*head)= new;
+		(*head) = new;
 		return;
 	}
 	while (last->next != NULL)
@@ -51,12 +51,12 @@ void add_node(stack_t **head, int n)
 	stack_w **words = NULL;
 
 	big_head = *head;
-	new = (stack_t*) malloc(sizeof(stack_t));
+	new = (stack_t *) malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		quickExit(*head, *words, EXIT_FAILURE);
-	}	
+	}
 	new->n = n;
 	new->prev = NULL;
 	new->next = *head;
@@ -142,19 +142,4 @@ void delete_node(stack_t **head, unsigned int index)
 		}
 		cur = cur->next;
 	}
-}
-void reverse(stack_w **h)
-{
-	stack_w *prev = NULL;
-	stack_w *current = *h;
-	stack_w *next = NULL;
-
-	while (current != NULL) {
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
-	*h = prev;
-	free(prev);
 }
