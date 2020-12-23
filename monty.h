@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <ctype.h>
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
+ * struct stack_a - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
@@ -55,9 +55,9 @@ typedef struct instruction_s
 extern FILE *fp;
 void swap(stack_t **head, unsigned int line);
 void reverse(stack_w **h);
-void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words);
+void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words);
 void add_node(stack_t **head, int n);
-void add_string_node(stack_w **head, char* n);
+void add_string_node(stack_w **head, char *n);
 char sameword(char *token, char *cmd);
 void delete_node(stack_t **head, unsigned int index);
 void pint(stack_t **stack, unsigned int line_number);

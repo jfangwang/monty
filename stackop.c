@@ -83,6 +83,11 @@ size_t print_node(const stack_t *h)
 	return (count);
 
 }
+/**
+ *print_node_word - prints all nodes
+ *@h: head
+ *Return: size_t
+ **/
 size_t print_node_word(const stack_w *h)
 {
 	int count = 0;

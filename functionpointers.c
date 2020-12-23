@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
-* functionpointers - points to a function
+* funp - points to a function
 * @token: token
 * @linenum: linenum
 * @head: head DLL
 * @words: words DLL
 * Return: void
 */
-void functionpointers(char *token, unsigned int linenum, stack_t **head, stack_w **words)
+void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words)
 {
 	instruction_t array[] = {
 		{"pall", pall},

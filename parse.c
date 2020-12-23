@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 				}
 			}
 			else
-				functionpointers(words->n, linecount, &head, &words);
+				funp(words->n, linecount, &head, &words);
 			while(words != NULL)
 				words = words->next;
 		}
