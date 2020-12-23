@@ -6,7 +6,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
-#include <fstream>
 /**
  * struct stack_a - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -53,8 +52,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-FILE *fp = NULL;
 extern FILE *fp;
+
 void swap(stack_t **head, unsigned int line);
 void reverse(stack_w **h);
 void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words);

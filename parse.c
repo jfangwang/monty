@@ -1,5 +1,6 @@
 #include "monty.h"
 
+FILE *fp = NULL;
 #define MAXCHAR 1000
 /**
  *main - name may change
