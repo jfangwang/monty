@@ -80,7 +80,8 @@ int main(int argc, char *argv[])
 			}
 			else
 				functionpointers(words->n, linecount, &head, &words);
-			words = words->next;
+			while(words != NULL)
+				words = words->next;
 		}
 		_free_words(temp);
 	}
