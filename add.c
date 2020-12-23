@@ -8,7 +8,6 @@
 void add(stack_t **head, unsigned int line)
 {
 	stack_t *temp = *head, *next;
-	stack_w **words = NULL;
 
 	if (head == NULL)
 	{
