@@ -7,8 +7,14 @@
  */
 FILE *fp;
 void quickExit(stack_t *head, int status)
-{	
+{
 	_free(head);
+	fclose(fp);
+	exit(status);
+}
+void quickExitWords(stack_w *head, int status)
+{	
+	_free_words(head);
 	fclose(fp);
 	exit(status);
 }

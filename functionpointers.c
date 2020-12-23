@@ -38,7 +38,7 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 	}
 	if (array[count].opcode == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: unknown\n", linenum);
+		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", linenum, token);
 		quickExit(*head, EXIT_FAILURE);
 	}
 }

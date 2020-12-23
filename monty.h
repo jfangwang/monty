@@ -66,6 +66,8 @@ void pop(stack_t **head, unsigned int line);
 size_t print_node(const stack_t *h);
 void push(stack_t **head, unsigned int line, char *args);
 void quickExit(stack_t *head, int status);
+void quickExitWords(stack_w *head, int status);
 void _free(stack_t *head);
 void _free_words(stack_w *head);
+void add(stack_t **head, unsigned int line);
 #endif

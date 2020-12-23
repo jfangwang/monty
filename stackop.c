@@ -9,27 +9,34 @@
 
 /**
  *add_string_node - adds a new node at the
- *beginning of double linked list
+ *end of double linked list
  *@head: head
  *@n: number
  *Return: void
  **/
 void add_string_node(stack_w **head, char *n)
 {
-	stack_w *new, *big_head;
+	stack_w *new, *last = *head;
 
-	big_head = *head;
-	new = malloc(sizeof(stack_t));
+	new = malloc(sizeof(stack_w));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		quickExitWords(*head, EXIT_FAILURE);
 	}	
 	new->n = n;
-	new->prev = NULL;
-	new->next = *head;
-	if (*head != NULL)
-		big_head->prev = new;
-	*head = new;
+	new->next = NULL;
+	/*if list is empty */
+	if ((*head) == NULL)
+	{
+		new->prev = NULL;
+		(*head)= new;
+		return;
+	}
+	while (last->next != NULL)
+		last = last->next;
+	last->next = new;
+	new->prev = last;
 }
 /**
  *add_node - adds a new node at the
@@ -125,15 +132,16 @@ void delete_node(stack_t **head, unsigned int index)
 }
 void reverse(stack_w **h)
 {
-    stack_w *prev = NULL;
-    stack_w *current = *h;
-    stack_w *next = NULL;
+	stack_w *prev = NULL;
+	stack_w *current = *h;
+	stack_w *next = NULL;
 
-    while (current != NULL) {
-        next = current->next;
-        current->next = prev;
-	prev = current;
-	current = next;
-    }
-    *h = prev;
+	while (current != NULL) {
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	*h = prev;
+	free(prev);
 }
