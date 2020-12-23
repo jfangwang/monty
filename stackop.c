@@ -21,7 +21,10 @@ void add_string_node(stack_w **head, char *n)
 	big_head = *head;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-		printf("#2 Head is null from add node\n");
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		quickExit(head, EXIT_FAILURE);
+	}	
 	new->n = n;
 	new->prev = NULL;
 	new->next = *head;
@@ -43,7 +46,10 @@ void add_node(stack_t **head, int n)
 	big_head = *head;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-		printf("#2 Head is null from add node\n");
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		quickExit(head, EXIT_FAILURE);
+	}	
 	new->n = n;
 	new->prev = NULL;
 	new->next = *head;

@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		_free_words(words);
 		quickExit(head, EXIT_FAILURE);
 	}
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		_free_words(words);
 		quickExit(head, EXIT_FAILURE);
 	}
@@ -62,14 +62,14 @@ int main(int argc, char *argv[])
 						(*push)(&head, linecount, pushnum);
 					else
 					{
-						dprintf(STDERR_FILENO, "L%u: usage: push integer\n", linecount);
+						fprintf(stderr, "L%u: usage: push integer\n", linecount);
 						_free_words(words);
 						quickExit(head, EXIT_FAILURE);
 					}
 				}
 				else
 				{
-					dprintf(STDERR_FILENO, "L%u: usage: push integer\n", linecount);
+					fprintf(stderr, "L%u: usage: push integer\n", linecount);
 					_free_words(words);
 					quickExit(head, EXIT_FAILURE);
 				}
