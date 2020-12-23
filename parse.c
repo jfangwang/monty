@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
 			add_string_node(&words, token);
 			token = strtok(NULL, " \n\t");
 		}
-		/*reverse(&words);*/
 		/* Iterate through words DLL */
 		while (words != NULL)
 		{
@@ -71,14 +70,14 @@ int main(int argc, char *argv[])
 					_free_words(words);
 					quickExit(head, EXIT_FAILURE);
 				}
-			}
+		}
 			else
 				functionpointers(words->n, linecount, &head);
 			words = words->next;
 		}
+		_free_words(words);
 	}
 	_free(head);
-	_free_words(words);
 	fclose(fp);
 	return (0);
 }

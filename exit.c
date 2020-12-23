@@ -28,9 +28,17 @@ void _free(stack_t *head)
 }
 void _free_words(stack_w *head)
 {
+	/*
 	if(head == NULL)
 		return;
 	if ((head)->next != NULL)
 		_free_words((head)->next);
-	free(head);
+		free(head);
+	 */
+	stack_w *curr = head;
+	while ((curr = head) != NULL)
+	{
+		head = head->next;
+		free(curr);
+	}
 }

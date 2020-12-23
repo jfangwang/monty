@@ -18,11 +18,11 @@ void add_string_node(stack_w **head, char *n)
 {
 	stack_w *new, *last = *head;
 
-	new = malloc(sizeof(stack_w));
+	new = (stack_w*) malloc(sizeof(stack_w));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		quickExitWords(*head, EXIT_FAILURE);
+		/*quickExitWords(*head, EXIT_FAILURE);*/
 	}	
 	new->n = n;
 	new->next = NULL;
@@ -50,7 +50,7 @@ void add_node(stack_t **head, int n)
 	stack_t *new, *big_head;
 
 	big_head = *head;
-	new = malloc(sizeof(stack_t));
+	new = (stack_t*) malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
