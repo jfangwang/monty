@@ -69,5 +69,7 @@ void push(stack_t **head, unsigned int line, char *args);
 void quickExit(stack_t *head, stack_w *words, int status);
 void _free(stack_t *head);
 void _free_words(stack_w *head);
+void free_temp (stack_w *words, stack_t *head, unsigned int linecount);
+void _push(stack_t *head, unsigned int linecount, char *pushnum);
 void add(stack_t **head, unsigned int line);
 #endif
