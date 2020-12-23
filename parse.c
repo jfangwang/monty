@@ -7,7 +7,6 @@
  *@argv: argv array
  *Return: exit failure or an op function
  */
-FILE *fp = NULL;
 int main(int argc, char *argv[])
 {
 	char *token, *filename, str[MAXCHAR];
