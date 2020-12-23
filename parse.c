@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 	while (fgets(str, MAXCHAR, fp) != NULL)
 	{
 		linecount += 1;
-		token = strtok(str, " ");
+		token = strtok(str, " \n\t");
 		while (token != NULL)
 		{
 			/*add to words DLL */
