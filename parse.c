@@ -61,8 +61,13 @@ int main(int argc, char *argv[])
 					{
 						if (words->n[a] == '\0' || words->n[a] == '\n')
 							break;
-						if (!isdigit(words->n[a]) && !(words->n[a]) == '-')
+						if (words->n[a] == '-' && a == 0)
+							continue;
+						if (!isdigit(words->n[a]))
+						{
 							flag = 1;
+							break;
+						}
 					}
 					if (flag == 0)
 						(*push)(&head, linecount, pushnum);
