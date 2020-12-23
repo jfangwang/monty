@@ -17,14 +17,18 @@ int main(int argc, char *argv[])
 	char *pushnum = "DNE";
 
 	if (argc != 2)
+	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
-//		quickExit(head, EXIT_FAILURE);
+		_free_words(words);
+		quickExit(head, EXIT_FAILURE);
+	}
 	filename = argv[1];
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
-//		quickExit(head, EXIT_FAILURE);
+		_free_words(words);
+		quickExit(head, EXIT_FAILURE);
 	}
 	while (fgets(str, MAXCHAR, fp) != NULL)
 	{
@@ -34,7 +38,7 @@ int main(int argc, char *argv[])
 		{
 			/*add to words DLL */
 			add_string_node(&words, token);
-			token = strtok(NULL, " ");
+			token = strtok(NULL, " \n\t");
 		}
 		reverse(&words);
 		/* Iterate through words DLL */
@@ -44,7 +48,6 @@ int main(int argc, char *argv[])
 			{
 				if (words->next)
 				{
-					printf("word: %s\n", words->n);
 					words = words->next;
 					flag = 0;
 					pushnum = words->n;
@@ -60,20 +63,22 @@ int main(int argc, char *argv[])
 					else
 					{
 						dprintf(STDERR_FILENO, "L%u: usage: push integer\n", linecount);
-				//		quickExit(head, EXIT_FAILURE);
+						_free_words(words);
+						quickExit(head, EXIT_FAILURE);
 					}
 				}
 				else
 				{
 					dprintf(STDERR_FILENO, "L%u: usage: push integer\n", linecount);
-				//	quickExit(head, EXIT_FAILURE);
+					_free_words(words);
+					quickExit(head, EXIT_FAILURE);
 				}
 			}
 			else
 				functionpointers(words->n, linecount, &head);
 			words = words->next;
 		}
-		free(words);
+		_free_words(words);
 	}
 	fclose(fp);
 	return (0);

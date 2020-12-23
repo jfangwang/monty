@@ -39,7 +39,7 @@ void functionpointers(char *token, unsigned int linenum, stack_t **head)
 	if (array[count].opcode == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: unknown\n", linenum);
-		/* quickExit(head, EXIT_FAILURE); */
+		quickExit(*head, EXIT_FAILURE);
 	}
 }
 char sameword(char *token, char *cmd)
