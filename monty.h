@@ -101,4 +101,5 @@ void reverse_num(stack_t **h);
 void reverse_word(stack_w **h);
 void queue(stack_t **head, unsigned int line);
 void stack(stack_t **head, unsigned int line);
+void add_words(char *token);
 #endif

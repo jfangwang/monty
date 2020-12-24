@@ -29,11 +29,7 @@ int main(int argc, char *argv[])
 	while (fgets(str, MAXCHAR, willy.fp) != NULL)
 	{
 		linecount += 1, token = strtok(str, " \n\t");
-		while (token != NULL)
-		{
-			add_string_node(&willy.words, token);
-			token = strtok(NULL, " \n\t");
-		}
+		add_words(token);
 		temp = willy.words;
 		while (willy.words != NULL)
 		{
@@ -49,6 +45,19 @@ int main(int argc, char *argv[])
 	_free(head);
 	fclose(willy.fp);
 	return (0);
+}
+/**
+ *add_words - add words to DLL
+ *@token: given line input
+ *Return: void
+ */
+void add_words(char *token)
+{
+	while (token != NULL)
+	{
+		add_string_node(&willy.words, token);
+		token = strtok(NULL, " \n\t");
+	}
 }
 /**
  *checkpush - checks if token is "push" and excutes
