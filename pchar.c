@@ -12,12 +12,11 @@ void pchar(stack_t **head, unsigned int line)
 		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", line);
 		quickExit(*head, willy.words, EXIT_FAILURE);
 	}
-	if ((*head)->n < 0 || (*head)->n > 128)
+	if ((*head)->n < 1 || (*head)->n > 127)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't pchar, value out of range\n", line);
 		quickExit(*head, willy.words, EXIT_FAILURE);
 	}
-
 	putchar((*head)->n);
 	putchar('\n');
 }
