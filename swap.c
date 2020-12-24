@@ -9,7 +9,6 @@ void swap(stack_t **head, unsigned int line)
 {
 	stack_t *temp;
 
-	print_node(*head);
 	if ((*head) == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line);
