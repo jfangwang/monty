@@ -82,6 +82,7 @@ void nop(stack_t **head, unsigned int line);
 void sub(stack_t **head, unsigned int line);
 void mul(stack_t **head, unsigned int line);
 void _div(stack_t **head, unsigned int line);
+void mod(stack_t **head, unsigned int line);
 size_t print_node(const stack_t *h);
 size_t print_node_word(const stack_w *h);
 void push(stack_t **head, unsigned int line, char *args);
