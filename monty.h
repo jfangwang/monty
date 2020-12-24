@@ -79,6 +79,7 @@ void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
 void pop(stack_t **head, unsigned int line);
 void nop(stack_t **head, unsigned int line);
+void sub(stack_t **head, unsigned int line);
 size_t print_node(const stack_t *h);
 size_t print_node_word(const stack_w *h);
 void push(stack_t **head, unsigned int line, char *args);
