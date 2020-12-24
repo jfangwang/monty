@@ -1,21 +1,28 @@
 #include "monty.h"
 
 /**
- * pall-print all values on the stack
+ * pstr-print all values on the stack
  * @head:head of list
  * @line_number: line num
  * Return:void
  */
-void pall(stack_t **head, unsigned int line_number)
+void pstr(stack_t **head, unsigned int line_number)
 {
 	stack_t *c = *head;
 	(void)line_number;
 
 	if (c == NULL)
-		putchar('\n');
-	while (c != NULL || c->n != '0' || (c->n < 256 && c->n > -1))
 	{
-		putchar(c->n);
+		putchar('\n');
+		return;
+	}
+	while (c != NULL)
+	{
+		if (c->n > 0 && c->n < 128)
+			putchar(c->n);
+		else
+			break;
 		c = c->next;
 	}
+	putchar('\n');
 }
