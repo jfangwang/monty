@@ -13,7 +13,6 @@ void queue(stack_t **head, unsigned int line)
 		willy.list = 1;
 		reverse_num(head);
 	}
-	return;
 }
 /**
  * stack- switches to stack
@@ -29,7 +28,6 @@ void stack(stack_t **head, unsigned int line)
 		willy.list = 0;
 		reverse_num(head);
 	}
-	return;
 }
 void reverse_num(stack_t **h)
 {
@@ -37,7 +35,8 @@ void reverse_num(stack_t **h)
 	stack_t *current = *h;
 	stack_t *next = NULL;
 
-	while (current != NULL) {
+	while (current != NULL) 
+	{
 		next = current->next;
 		current->next = prev;
 		prev = current;
