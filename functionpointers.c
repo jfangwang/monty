@@ -7,42 +7,42 @@
 * @head: head DLL
 * @words: words DLL
 * Return: void
-*/
+ */
 void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words)
 {
 	instruction_t array[] = {
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", _div},
+		{"#", comment}, {"pall", pall}, {"pint", pint},
+		{"pop", pop}, {"swap", swap}, {"add", add},
+		{"nop", nop}, {"sub", sub}, {"div", _div},
 		{"mul", mul},
 		{"mod", mod},
-		{"#", comment},
 		/*
-		*{"pchar", pchar},
-		*{"pstr", pstr},
-		*{"rotl", rotl},
-		*{"rotr", rotr},
-		*{"stack", stack},
-		*{"queue", queue},
-		*/
+		 *{"pchar", pchar},
+		 *{"pstr", pstr},
+		 *{"rotl", rotl},
+		 *{"rotr", rotr},
+		 *{"stack", stack},
+		 *{"queue", queue},
+		 */
 		{NULL, NULL}
 	};
 	int count = 0;
 	char t = 't';
+	char *h = "#j";
 
-	while (array[count].opcode)
+	if (token[0] == h[0])
+		array[0].f(head, linenum);
+	else
 	{
-		if (sameword(token, array[count].opcode) == t)
+		while (array[count].opcode)
 		{
-			array[count].f(head, linenum);
-			return;
+			if (sameword(token, array[count].opcode) == t)
+			{
+				array[count].f(head, linenum);
+				return;
+			}
+			count++;
 		}
-		count++;
 	}
 	if (array[count].opcode == NULL)
 	{
@@ -51,11 +51,11 @@ void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words)
 	}
 }
 /**
-* sameword - checks if token and cmd is the same word
-* @token: token
-* @cmd: command
-* Return: void
-*/
+ * sameword - checks if token and cmd is the same word
+ * @token: token
+ * @cmd: command
+ * Return: void
+ */
 char sameword(char *token, char *cmd)
 {
 	char t = 't', f = 'f';
@@ -79,10 +79,10 @@ char sameword(char *token, char *cmd)
 		return (f);
 }
 /**
-*reverse - reverses a list
-*@h: head
-*Return: void
-*/
+ *reverse - reverses a list
+ *@h: head
+ *Return: void
+ */
 void reverse(stack_w **h)
 {
 	stack_w *prev = NULL;
