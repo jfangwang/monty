@@ -16,8 +16,8 @@ void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words)
 		{"nop", nop}, {"sub", sub}, {"div", _div},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
 		/*
-		 *{"pchar", pchar},
 		 *{"pstr", pstr},
 		 *{"rotl", rotl},
 		 *{"rotr", rotr},
