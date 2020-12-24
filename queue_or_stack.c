@@ -31,6 +31,11 @@ void stack(stack_t **head, unsigned int line)
 		reverse_num(head);
 	}
 }
+/**
+ * reverse_num- reverses a DLL
+ * @h: head of list
+ * Return: void
+ */
 void reverse_num(stack_t **h)
 {
 	stack_t *prev = NULL;

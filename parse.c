@@ -1,5 +1,4 @@
 #include "monty.h"
-varlist willy;
 #define MAXCHAR 1000
 /**
  *main - name may change

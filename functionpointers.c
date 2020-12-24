@@ -77,7 +77,7 @@ char sameword(char *token, char *cmd)
 		return (f);
 }
 /**
- *reverse - reverses a list
+ *reverse_word - reverses a list
  *@h: head
  *Return: void
  */

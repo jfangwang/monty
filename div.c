@@ -1,9 +1,10 @@
 #include "monty.h"
 
 /**
- * div - 2nd / 1st = 2nd
- * @line:line arguments came from
+ * _div - 2nd / 1st = 2nd
  * @head:input
+ * @line:line arguments came from
+ * Return: void
  */
 void _div(stack_t **head, unsigned int line)
 {

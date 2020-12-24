@@ -56,6 +56,7 @@ typedef struct instruction_s
  * @test: testing...
  * @words: DLL
  * @fp: file
+ * @list: 0 is stack, 1 is queue
  *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO Holberton project
@@ -65,11 +66,11 @@ typedef struct variables
 	int test;
 	stack_w *words;
 	FILE *fp;
-	/*0 = s, 1 = q*/
 	int list;
 } varlist;
 extern varlist willy;
 
+varlist willy;
 void swap(stack_t **head, unsigned int line);
 void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words);
 void add_node(stack_t **head, int n);
