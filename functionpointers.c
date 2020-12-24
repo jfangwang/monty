@@ -20,10 +20,8 @@ void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
-		/*
-		 *{"stack", stack},
-		 *{"queue", queue},
-		 */
+		{"stack", stack},
+		{"queue", queue},
 		{NULL, NULL}
 	};
 	int count = 0;
@@ -83,7 +81,7 @@ char sameword(char *token, char *cmd)
  *@h: head
  *Return: void
  */
-void reverse(stack_w **h)
+void reverse_word(stack_w **h)
 {
 	stack_w *prev = NULL;
 	stack_w *current = *h;

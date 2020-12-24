@@ -65,11 +65,12 @@ typedef struct variables
 	int test;
 	stack_w *words;
 	FILE *fp;
+	/*0 = s, 1 = q*/
+	int list;
 } varlist;
 extern varlist willy;
 
 void swap(stack_t **head, unsigned int line);
-void reverse(stack_w **h);
 void funp(char *token, unsigned int linenum, stack_t **head, stack_w **words);
 void add_node(stack_t **head, int n);
 void add_string_node(stack_w **head, char *n);
@@ -96,4 +97,8 @@ void _free(stack_t *head);
 void _free_words(stack_w *head);
 void add(stack_t **head, unsigned int line);
 void checkpush(stack_w *words, stack_t **head, unsigned int linecount);
+void reverse_num(stack_t **h);
+void reverse_word(stack_w **h);
+void queue(stack_t **head, unsigned int line);
+void stack(stack_t **head, unsigned int line);
 #endif
