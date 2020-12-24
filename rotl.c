@@ -7,7 +7,7 @@
  **/
 void rotl(stack_t **head, unsigned int line_number)
 {
-        stack_t *next, *temp = (*head);
+	stack_t *next, *temp = (*head);
 	(void)line_number;
 
 	if (temp == NULL)
@@ -17,7 +17,7 @@ void rotl(stack_t **head, unsigned int line_number)
 	next = (*head)->next;
 	(*head) = next;
 	next->prev = NULL;
-	while(next->next)
+	while (next->next)
 		next = next->next;
 	next->next = temp;
 	temp->prev = next;
