@@ -9,7 +9,13 @@ void swap(stack_t **head, unsigned int line)
 {
 	stack_t *temp;
 
-	if (head == NULL)
+	print_node(*head);
+	if ((*head) == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line);
+		quickExit(*head, willy.words, EXIT_FAILURE);
+	}
+	if ((*head)->next == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line);
 		quickExit(*head, willy.words, EXIT_FAILURE);
