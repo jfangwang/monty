@@ -86,6 +86,7 @@ void mod(stack_t **head, unsigned int line);
 void comment(stack_t **head, unsigned int line);
 void pchar(stack_t **head, unsigned int line);
 void pstr(stack_t **head, unsigned int line_number);
+void rotl(stack_t **head, unsigned int line_number);
 size_t print_node(const stack_t *h);
 size_t print_node_word(const stack_w *h);
 void push(stack_t **head, unsigned int line, char *args);
